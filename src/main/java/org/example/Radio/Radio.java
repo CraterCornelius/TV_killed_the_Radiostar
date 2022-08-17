@@ -5,45 +5,59 @@ public class Radio {
     public int currentStation;
     public int currentVolume;
 
+    public int minStation = 0;
+    public int maxStation = 9;
+    public int minVolume = 0;
+    public int maxVolume = 100;
+    public int commonAmount;
+
+    public Radio(){
+        commonAmount = 9;
+    }
+
+    public Radio(int commonAmount) {
+        this.commonAmount = commonAmount;
+    }
+
     public int getCurrentStation() {
         return currentStation;
     }
 
     public int setCurrentStation() {
-        if (currentStation < 0) {
-            return 0;
+        if (currentStation < minStation) {
+            return minStation;
         }
-        if (currentStation > 9) {
-            return 9;
+        if (currentStation > maxStation) {
+            return maxStation;
         }
         this.currentStation = currentStation;
         return currentStation;
     }
 
     public void switchToNextStation() {
-        if (currentStation == 9) {
-            currentStation = 0;
+        if (currentStation == maxStation) {
+            currentStation = minStation;
         } else {
             currentStation = currentStation + 1;
         }
     }
 
     public void switchToPreviousStation() {
-        if (currentStation == 0) {
-            currentStation = 9;
+        if (currentStation == minStation) {
+            currentStation = maxStation;
         } else {
             currentStation = currentStation - 1;
         }
     }
 
     public void volumeUp() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume++;
         }
     }
 
     public void volumeDown() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume--;
         }
     }
