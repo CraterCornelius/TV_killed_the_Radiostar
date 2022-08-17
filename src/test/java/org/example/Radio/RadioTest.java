@@ -113,10 +113,10 @@ class RadioTest {
     @Test
     public void doNotGoAboveMax() {
         Radio radio = new Radio();
-        radio.currentVolume = 10;
+        radio.currentVolume = 100;
         radio.volumeUp();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.currentVolume;
 
         Assertions.assertEquals(expected, actual);
